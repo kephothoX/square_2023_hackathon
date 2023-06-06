@@ -15,13 +15,13 @@ import { getFunctions, httpsCallable } from 'firebase/functions';
 })
 export class AppService {
   firebaseConfig = {
-    apiKey: "AIzaSyBcf-TpG2nQDu0_FrCGcmKJKjMnJ_8OyDM",
+    apiKey: "****************",
     authDomain: "healus-a85f5.firebaseapp.com",
     projectId: "healus-a85f5",
     storageBucket: "healus-a85f5.appspot.com",
-    messagingSenderId: "499436687151",
-    appId: "1:499436687151:web:6d13d1b04b82db9b159bda",
-    measurementId: "G-LKZ7WTHLT7"
+    messagingSenderId: "*********",
+    appId: "************************",
+    measurementId: "************"
   };
 
   app = initializeApp(this.firebaseConfig);
