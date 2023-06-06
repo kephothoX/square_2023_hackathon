@@ -1,0 +1,112 @@
+<app-header></app-header>
+
+<section>
+  <mat-card>
+    <mat-card-content>
+      <mat-horizontal-stepper [linear]="true" #stepper [animationDuration]="duration">
+        <mat-step [stepControl]="newUserDetailsForm">
+          <form [formGroup]="newUserDetailsForm">
+            <ng-template matStepLabel>Fill out your Basic Information</ng-template>
+            <mat-form-field appearance="outline" class="p-1">
+              <mat-label>First Name </mat-label>
+              <mat-icon matPrefix  class="material-icons">info_outline</mat-icon>
+              <mat-hint align="end"></mat-hint>
+              <input type="text" matInput  formControlName = "given_name" placeholder="First Name">
+            </mat-form-field>
+            <div class="spacer"></div>
+
+            <mat-form-field appearance="outline" class="p-1">
+              <mat-label>Last Name </mat-label>
+              <mat-icon matPrefix  class="material-icons">info_outline</mat-icon>
+              <mat-hint align="end"></mat-hint>
+              <input type="text" matInput  formControlName = "family_name" placeholder="Last Name">
+            </mat-form-field>
+            <div class="spacer"></div>
+
+            <mat-form-field appearance="outline" class="p-1">
+              <mat-label>Email </mat-label>
+              <mat-hint align="end"></mat-hint>
+              <input type="email" matInput email="true" formControlName="email_address" placeholder="Email Address" (change)="getEmailAddress($event)">
+              <mat-icon matPrefix  class="material-icons">mail_outline</mat-icon>
+            </mat-form-field>
+            <div class="spacer"></div>
+
+            <mat-form-field appearance="outline" class="p-1">
+              <mat-label>Phone Number </mat-label>
+              <mat-hint align="end"></mat-hint><mat-icon matPrefix  class="material-icons">phone</mat-icon>
+              <input type="tel" matInput tel="true" formControlName="phone_number" placeholder="Phone Number">
+            </mat-form-field>
+            <div class="spacer"></div>
+
+          </form>
+
+          <mat-card-actions class="align-buttons-center">
+            <button mat-raised-button matStepperNext >
+              <mat-icon class="material-icons">chevron_right</mat-icon>
+              Next
+            </button>
+          </mat-card-actions>
+        </mat-step>
+
+        <mat-step [stepControl]="newUserCredentialsForm">
+          <form [formGroup] ="newUserCredentialsForm">
+            <ng-template matStepLabel>Fill out your Password With Email as Username</ng-template>
+            <mat-form-field appearance="outline" class="p-1">
+              <mat-label>Email </mat-label>
+              <mat-hint align="end"></mat-hint>
+              <input type="email" matInput email="true" formControlName="email_address" [(ngModel)]="email_address" editable="false">
+              <mat-icon matPrefix  class="material-icons">mail_outline</mat-icon>
+            </mat-form-field>
+            <div class="spacer"></div>
+             <mat-form-field appearance="outline" class="p-1">
+              <mat-label>Password </mat-label>
+              <mat-hint align="end"></mat-hint><mat-icon matPrefix  class="material-icons">security</mat-icon>
+              <input type="password" matInput formControlName="password" placeholder="Password">
+            </mat-form-field>
+            <div class="spacer"></div>
+
+              <mat-card-actions class="align-buttons-center">
+                <button type="submit" mat-raised-button  (click)="onSubmit()">
+                  <mat-icon class="material-icons">add_circle</mat-icon>
+                  Signup As Admin
+                </button>
+                <button type="reset" mat-raised-button color="warn" class="text-white">
+                  <mat-icon class="material-icons">cancel</mat-icon>
+                  Clear
+                </button>
+              </mat-card-actions>
+
+              <mat-card-actions class="align-buttons-center">
+              <button mat-raised-button matStepperPrevious>
+                <mat-icon class="material-icons">chevron_left</mat-icon>
+                Back
+              </button>
+              <button mat-raised-button matStepperNext >
+                <mat-icon class="material-icons">chevron_right</mat-icon>
+                Next
+              </button>
+            </mat-card-actions>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          <mat-card-actions class="align-buttons-center">
+            <a routerLink="/admin/auth/signin">
+              <button mat-raised-button>
+                <mat-icon class="material-icons">lock_open</mat-icon>
+                Login As Admin
+              </button>
+            </a>
+            <button mat-raised-button matStepperPrevious (click)="stepper.reset()">
+              <mat-icon class="material-icons">cancel</mat-icon>
+              Reset
+            </button>
+          </mat-card-actions>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </mat-card-content>
+
+  </mat-card>
+
+</section>
+
